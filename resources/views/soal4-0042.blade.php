@@ -20,6 +20,9 @@
     <div class="container">
         <div class="header">
             Soal 4
+            <br>
+            data guru pada jadwal
+            select nip digit belakang 6
         </div>
         <div class="content">
             <table align="center" class="table">

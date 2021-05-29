@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
 use App\Models\Jadwal;
 
@@ -22,16 +23,19 @@ class GuruController extends Controller
 
     public function selectJoin()
     {
-        $gurus = Jadwal::join('tbl_jadwal','data_guru.id_guru', '=', 'tbl_jadwal.id_guru')
-                        ->get(['tbl_jadwal.*']);
-        // return view('soal2-0042',compact('gurus'));
-        dd($gurus);
+        $gurus = DB::table('data_guru')
+                    ->join('tbl_jadwal','data_guru.id_guru', "=", 'tbl_jadwal.id_guru')
+                    ->get();
+        return view('soal3-0042',compact('gurus'));
     }
 
     public function selectJoinLike()
     {
-        $gurus = Guru::where('kelamin','laki-laki')->get();
-        return view('soal2-0042',compact($gurus));
+        $gurus = DB::table('data_guru')
+                    ->join('tbl_jadwal','data_guru.id_guru', "=", 'tbl_jadwal.id_guru')
+                    ->where('nip','LIKE','%6')
+                    ->get();
+        return view('soal4-0042',compact('gurus'));
     }
 
 
