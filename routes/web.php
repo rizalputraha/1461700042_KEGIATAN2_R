@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GuruController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/soal1', [GuruController::class,'selectTable']);
+Route::get('/soal2', [GuruController::class,'selectWhere']);
+Route::get('/soal3', [GuruController::class,'selectJoin']);
+Route::get('/soal4', [GuruController::class,'selectJoinLike']);
